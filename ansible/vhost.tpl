@@ -1,9 +1,11 @@
+NameVirtualHost *:80
 <VirtualHost *:80>
-    ServerAdmin webmaster@localhost
-    DocumentRoot {{ doc_root }}
+   ServerName localhost
+   Redirect permanent / https://localhost/
+</VirtualHost>
 
-    <Directory {{ doc_root }}>
-        AllowOverride All
-        Require all granted
-    </Directory>
+<VirtualHost _default_:443>
+   ServerName secure.example.com
+   DocumentRoot /usr/local/apache2/htdocs
+   SSLEngine On
 </VirtualHost>
